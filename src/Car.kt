@@ -1,24 +1,24 @@
-class Car(val name: String, speed_param: Int) {
-    init {
-        println("My car $name")
-    }
+class Car(model_param: String, speed_param: Int, var color: String) {
+    val model = model_param.toUpperCase()
 
-    var color = "blue"
+    init {
+        println("My car $model")
+    }
 
     var speed = speed_param
         set(value) {
             if (value > 0) field = value
         }
-
-    fun drive() {
-        println(if (speed > 180) "Turbo" else "loser")
-    }
+    val speedInMil: Double
+        get() = speed * 1.6
 }
 
 fun main(args: Array<String>) {
-    val myCar = Car("Toyot)
-    myCar.color = "red"
-    println("My car $myCar")
-    myCar.drive()
+    val myCar = Car("toyota", 160, "red")
+    println("My car ${myCar.model} ${myCar.speed} ${myCar.color}")
+    myCar.speed = 200
+    myCar.color = "blue"
+    myCar.speedInMil
+    println("My car ${myCar.model} ${myCar.speedInMil} ${myCar.color}")
 
 }
