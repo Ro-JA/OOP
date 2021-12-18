@@ -56,18 +56,27 @@ class Nissan : CargoCar() {
     override fun drive() {
         println("The $model color $color a transmission $transmission is driving")
     }
+}
 
+class Mechanic {
+    fun paint(auto : Automobile) {
+        println("${auto.color}")
+    }
 }
 
 fun main(args: Array<String>) {
+    val cars = arrayOf(Toyota(), Nissan())
+    for (item in cars) {
+        item.drive()
+        item.beep()
+    }
+
+    val mech = Mechanic()
     val ist = Toyota()
     val titan = Nissan()
-
-    ist.drive()
-    ist.beep()
-    ist.autopilot()
+    mech.paint(ist)
+    mech.paint(titan)
 
 
-    titan.drive()
-    titan.beep()
+
 }
